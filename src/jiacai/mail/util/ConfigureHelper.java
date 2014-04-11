@@ -1,11 +1,14 @@
 package jiacai.mail.util;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.Properties;
 
 public class ConfigureHelper {
 
 	private static Properties prop = new Properties();
+	
+	static String base = System.getProperty("user.dir") + File.separatorChar;
 	
 	static {
 		try {
@@ -22,12 +25,12 @@ public class ConfigureHelper {
 		return prop.getProperty("pwd");
 	}
 	public static String getAttachFolder() {
-		return prop.getProperty("attach");
+		return base + prop.getProperty("attachFolder");
 	}
 	public static String getToFile() {
 		return prop.getProperty("tos");
 	}
-	public static String getQRFile() {
-		return prop.getProperty("qrchart");
+	public static String getHtmlPicFolder() {
+		return base + prop.getProperty("htmlPicFolder");
 	}
 }

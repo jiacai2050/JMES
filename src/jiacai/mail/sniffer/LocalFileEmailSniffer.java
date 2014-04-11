@@ -1,4 +1,4 @@
-package jiacai.mail.util;
+package jiacai.mail.sniffer;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -11,9 +11,18 @@ import java.util.regex.Pattern;
 import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 
-public class EmailSniffer {
+import jiacai.mail.util.ConfigureHelper;
 
-	public static List<InternetAddress> getEmails(String file) {
+public class LocalFileEmailSniffer implements EmailSniffer{
+ 
+	private String file;
+	
+	public LocalFileEmailSniffer(String file) {
+		this.file = file;
+	}
+
+	@Override
+	public List<InternetAddress> getEmails() {
 		List<InternetAddress> urls = new  ArrayList<InternetAddress>();
 		
 		try (BufferedReader br = new BufferedReader(new FileReader(
@@ -35,6 +44,6 @@ public class EmailSniffer {
 	}
 
 	public static void main(String[] args) throws Exception {
-		System.out.println(getEmails(ConfigureHelper.getToFile()));
+		System.out.println(new LocalFileEmailSniffer(ConfigureHelper.getToFile()).getEmails());
 	}
 }
