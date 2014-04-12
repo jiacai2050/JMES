@@ -19,7 +19,7 @@ import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 
-import jiacai.mail.sniffer.LocalFileEmailSniffer;
+import jiacai.mail.sniffer.URLEmailSniffer;
 import jiacai.mail.util.ConfigureHelper;
 
 @Deprecated
@@ -34,7 +34,7 @@ public class JavaMailTest {
 		String subject = "编程资源";
 		String from = ConfigureHelper.getUserEmail();
 		String pwd = ConfigureHelper.getUserPwd();
-		String tosfile = ConfigureHelper.getToFile();
+		String tosfile = ConfigureHelper.getTos();
 
 		Properties props = System.getProperties();
 
@@ -50,7 +50,7 @@ public class JavaMailTest {
 		msg.setFrom(new InternetAddress(from));
 		msg.setSubject(subject);
 		
-		List<InternetAddress> tosList = new LocalFileEmailSniffer(tosfile).getEmails();
+		List<InternetAddress> tosList = new URLEmailSniffer(tosfile).getEmails();
 		InternetAddress[] tosArray = new InternetAddress[tosList.size()];
 		tosList.toArray(tosArray);
 		msg.setRecipients(RecipientType.TO, tosArray);

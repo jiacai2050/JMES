@@ -1,16 +1,31 @@
 package jiacai.mail;
 
 import java.io.File;
+import java.util.Collection;
+
+import javax.mail.internet.InternetAddress;
 
 import org.apache.commons.mail.EmailAttachment;
 import org.apache.commons.mail.EmailException;
 import org.apache.commons.mail.HtmlEmail;
 
-public class EmailMessage {
+public class JMEMessage {
 
 	private String message;
+	private String subject;
+	private Collection<InternetAddress> toEmails;
+	private InternetAddress from;
+	private String htmlPicFolder;
+	private String attachFolder;
 
-	public EmailMessage(HtmlEmail email, String htmlPicFolder, String attachFolder) {
+	public JMEMessage(HtmlEmail email, InternetAddress from,
+			Collection<InternetAddress> toEmails, String subject,
+			String htmlPicFolder, String attachFolder) {
+		this.from = from;
+		this.toEmails = toEmails;
+		this.subject = subject;
+		this.htmlPicFolder = htmlPicFolder;
+		this.attachFolder = attachFolder;
 
 		StringBuffer sb = new StringBuffer();
 		sb.append("<html><body>");
@@ -33,18 +48,63 @@ public class EmailMessage {
 			sb.append("<h3>Group-sending by <a href='https://github.com/jiacai2050/mass-email-sender'>mass-email-sender</a></h3>");
 			sb.append("</body></html>");
 
-			message = sb.toString();
+			this.message = sb.toString();
 		}
-		
+
 		if (null != attachFolder) {
 			appendAttach(email, attachFolder);
 		}
 
 	}
 
+	public InternetAddress getFrom() {
+		return from;
+	}
+
+	public void setFrom(InternetAddress from) {
+		this.from = from;
+	}
+
+	public String getHtmlPicFolder() {
+		return htmlPicFolder;
+	}
+
+	public void setHtmlPicFolder(String htmlPicFolder) {
+		this.htmlPicFolder = htmlPicFolder;
+	}
+
+	public String getAttachFolder() {
+		return attachFolder;
+	}
+
+	public void setAttachFolder(String attachFolder) {
+		this.attachFolder = attachFolder;
+	}
+
+	public void setMessage(String message) {
+		this.message = message;
+	}
+
+	public Collection<InternetAddress> getToEmails() {
+		return toEmails;
+	}
+
+	public String getSubject() {
+		return subject;
+	}
+
+	public void setSubject(String subject) {
+		this.subject = subject;
+	}
+
+	public void setToEmails(Collection<InternetAddress> toEmails) {
+		this.toEmails = toEmails;
+	}
+
 	public String getMessage() {
 		return message;
 	}
+
 	private static void appendAttach(HtmlEmail email, String folder) {
 
 		File[] files = new File(folder).listFiles();

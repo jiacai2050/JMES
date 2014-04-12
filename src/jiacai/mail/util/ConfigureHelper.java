@@ -27,7 +27,7 @@ public class ConfigureHelper {
 	public static String getAttachFolder() {
 		return base + prop.getProperty("attachFolder");
 	}
-	public static String getToFile() {
+	public static String getTos() {
 		return prop.getProperty("tos");
 	}
 	public static String getHtmlPicFolder() {

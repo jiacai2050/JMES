@@ -1,7 +1,5 @@
 package jiacai.mail.host;
 
-import javax.naming.OperationNotSupportedException;
-
 import org.apache.commons.mail.HtmlEmail;
 
 public class GmailHost implements HostEntity{
@@ -15,11 +13,8 @@ public class GmailHost implements HostEntity{
 
 	@Override
 	public void setHostWithNoSSL(HtmlEmail email) {
-		try {
-			throw new OperationNotSupportedException("gmail必须使用SSL验证连接");
-		} catch (OperationNotSupportedException e) {
-			e.printStackTrace();
-		}
+		this.setHostWithSSL(email);
+		System.err.println("Gmail必须使用SSL验证连接,自动转到SSL");
 	}
 
 }

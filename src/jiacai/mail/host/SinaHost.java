@@ -8,11 +8,8 @@ public class SinaHost implements HostEntity{
 
 	@Override
 	public void setHostWithSSL(HtmlEmail email) {
-		try {
-			throw new OperationNotSupportedException("新浪暂不支持SSL验证连接");
-		} catch (OperationNotSupportedException e) {
-			e.printStackTrace();
-		}
+		System.err.println("新浪暂不支持SSL验证连接,自动转动非SSL连接");
+		this.setHostWithNoSSL(email);
 	}
 
 	@Override

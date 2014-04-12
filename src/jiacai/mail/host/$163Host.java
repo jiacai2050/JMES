@@ -2,7 +2,7 @@ package jiacai.mail.host;
 
 import org.apache.commons.mail.HtmlEmail;
 
-public class $163 implements HostEntity{
+public class $163Host implements HostEntity{
 
 	String STMP_NAME = "smtp.163.com";
 	
