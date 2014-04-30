@@ -3,3 +3,6 @@ src/conf.properties
 English/
 QR/
 attach/
+build/
+.gradle/
+.settings/
