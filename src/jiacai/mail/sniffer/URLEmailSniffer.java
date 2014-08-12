@@ -18,17 +18,17 @@ import javax.mail.internet.InternetAddress;
 public class URLEmailSniffer implements EmailSniffer{
 
 	private URL url;
-	public URLEmailSniffer(String urlStr) {
+	public URLEmailSniffer(String urlSeed) {
 		try {
-			int colon = urlStr.indexOf(":");
-			if (-1 == colon || urlStr.startsWith("/")) {
-				this.url = new File(urlStr).toURI().toURL();
+			int colon = urlSeed.indexOf(":");
+			if (-1 == colon || urlSeed.startsWith("/")) {
+				this.url = new File(urlSeed).toURI().toURL();
 			} else {
-				String protocol = urlStr.substring(0, colon);
+				String protocol = urlSeed.substring(0, colon);
 				if (protocol == null || protocol.contains(File.separatorChar+"")) {
-					this.url = new File(urlStr).toURI().toURL();
+					this.url = new File(urlSeed).toURI().toURL();
 				} else {
-					this.url = new URL(urlStr);
+					this.url = new URL(urlSeed);
 				}
 			}
 		} catch (MalformedURLException e) {
@@ -60,9 +60,5 @@ public class URLEmailSniffer implements EmailSniffer{
 			e.printStackTrace();
 		} 
 		return null;
-	}
- 	public static void main(String[] args) throws Exception{
-		System.out.println(new URLEmailSniffer("http://bbs.tianya.cn/post-english-220021-1.shtml").getEmails());
- 		//System.out.println(new WebEmailSniffer("/home/liujiacai/1234").getEmails());
 	}
 }

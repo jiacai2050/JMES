@@ -1,8 +1,8 @@
-package jiacai.mail.host;
+package jiacai.mail.domain;
 
 import org.apache.commons.mail.HtmlEmail;
 
-public class GmailHost implements HostEntity{
+public class Gmail implements Domain{
 
 	@Override
 	public void setHostWithSSL(HtmlEmail email) {

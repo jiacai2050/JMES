@@ -1,10 +1,9 @@
-package jiacai.mail.host;
+package jiacai.mail.domain;
 
-import javax.naming.OperationNotSupportedException;
 
 import org.apache.commons.mail.HtmlEmail;
 
-public class QQHost implements HostEntity{
+public class QQ implements Domain{
 
 	//http://kf.qq.com/faq/120322fu63YV130422nqIrqu.html
 	//qq企业http://service.exmail.qq.com/cgi-bin/help?id=28&no=1000585&subtype=1

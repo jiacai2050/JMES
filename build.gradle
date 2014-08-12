@@ -1,12 +1,18 @@
 apply plugin: 'java'
 apply plugin: 'eclipse'
 version = '0.1-alpha'
-jar.manifest.attributes('Main-Class': 'jiacai.mail.JMES')
+
+jar {
+	from { 
+ 		configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } 
+ 	}
+	manifest.attributes('Main-Class': 'jiacai.mail.JMESMain')
+}
 sourceSets {
 	main.java.srcDirs = ['src']
 	test.java.srcDirs = ['test']
 }
-buildDir = 'bin' 
+buildDir = 'build' 
 repositories {
 	mavenCentral()
 }
@@ -15,4 +21,7 @@ List emails = ["org.apache.commons:commons-email:1.3.2",
 dependencies {
 	compile emails 
 	testCompile 'junit:junit:4.10'
+}
+task wrapper(type: Wrapper) {
+	gradleVersion = '1.11'
 }

@@ -20,7 +20,6 @@ import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 
 import jiacai.mail.sniffer.URLEmailSniffer;
-import jiacai.mail.util.ConfigureHelper;
 
 @Deprecated
 public class JavaMailTest {
@@ -32,9 +31,9 @@ public class JavaMailTest {
 	public static void send(String contentWord,String contentPicFolder,String attachFolder) throws Exception {
 
 		String subject = "编程资源";
-		String from = ConfigureHelper.getUserEmail();
-		String pwd = ConfigureHelper.getUserPwd();
-		String tosfile = ConfigureHelper.getTos();
+		String from = "";
+		String pwd = "";
+		String tosfile = "";
 
 		Properties props = System.getProperties();
 

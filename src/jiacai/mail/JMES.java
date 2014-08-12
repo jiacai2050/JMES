@@ -1,37 +1,59 @@
 package jiacai.mail;
 
+import java.util.List;
 
-import jiacai.mail.host.HostEntity;
+import javax.mail.internet.InternetAddress;
 
+import jiacai.mail.domain.Domain;
+import jiacai.mail.domain.factory.Factory;
+import jiacai.mail.sniffer.URLEmailSniffer;
+import jiacai.mail.util.Configuration;
+
+import org.apache.commons.mail.EmailException;
 import org.apache.commons.mail.HtmlEmail;
 
 public class JMES {
 
-	private HostEntity hostEntity;
+	private Domain domain;
 	private JMEAuthentication auth;
-
+	private HtmlEmail email;
+	private String subject;
+	private JMEMessage msg;
+	private List<InternetAddress> recipients;
 	private boolean debug;
 
-	public JMES(HostEntity hostEntity, JMEAuthentication auth, boolean debug) {
-		super();
-		this.hostEntity = hostEntity;
-		this.auth = auth;
+	public JMES(Configuration conf, String subject, boolean debug) {
+		email = new HtmlEmail();
+		this.subject = subject;
+		this.auth = new JMEAuthentication(conf.getUserEmail(),
+				conf.getUserPwd());
 		this.debug = debug;
+		domain = Factory.getDomain(conf.getDomainType());
+
+		this.recipients = new URLEmailSniffer(conf.getRecipients()).getEmails();
+		this.msg = new JMEMessage(email, conf.getMsgFile(), conf.getHtmlPicFolder(),
+				conf.getAttachFolder());
 	}
 
-	public void send(HtmlEmail email, JMEMessage JMEmsg) throws Exception {
+	public void send(){
 
-		hostEntity.setHostWithNoSSL(email);
+		domain.setHostWithNoSSL(email);
 		email.setAuthenticator(auth);
 		email.setCharset("UTF-8");
 		email.setDebug(debug);
-		email.setFrom(auth.getPwdAuth().getUserName()).setTo(
-				JMEmsg.getToEmails());
-		email.setHtmlMsg(JMEmsg.getMessage()).setSubject(JMEmsg.getSubject());
-		email.setTextMsg("Your email client does not support HTML messages")
-				.send();
-
-		System.out.println("\nMail was sent successfully.");
+		try {
+			email.setFrom(auth.getPwdAuth().getUserName()).setTo(recipients);
+			email.setHtmlMsg(msg.getMsg()).setSubject(subject);
+			email.setTextMsg("Your email client does not support HTML messages")
+					.send();
+		} catch (EmailException e) {
+			e.printStackTrace();
+		}
+		System.out.println("成功向");
+		for(InternetAddress rec: recipients) {
+			System.out.println(rec.getAddress());
+		}
+		System.out.println("发送邮件Y(^_^)Y");
 	}
 
 	public JMEAuthentication getAuth() {
@@ -50,12 +72,20 @@ public class JMES {
 		this.debug = debug;
 	}
 
-	public void setHostEntity(HostEntity hostEntity) {
-		this.hostEntity = hostEntity;
+	public Domain getDomain() {
+		return domain;
 	}
 
-	public HostEntity getHostEntity() {
-		return hostEntity;
+	public void setDomain(Domain domain) {
+		this.domain = domain;
+	}
+
+	public HtmlEmail getEmail() {
+		return email;
+	}
+
+	public void setEmail(HtmlEmail email) {
+		this.email = email;
 	}
 
 }

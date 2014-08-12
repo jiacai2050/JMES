@@ -1,8 +1,8 @@
-package jiacai.mail.host;
+package jiacai.mail.domain;
 
 import org.apache.commons.mail.HtmlEmail;
 
-public interface HostEntity {
+public interface Domain {
 	void setHostWithSSL(HtmlEmail email);
 	void setHostWithNoSSL(HtmlEmail email);
 }

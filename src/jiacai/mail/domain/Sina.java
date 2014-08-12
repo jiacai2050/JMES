@@ -1,10 +1,10 @@
-package jiacai.mail.host;
+package jiacai.mail.domain;
 
 import javax.naming.OperationNotSupportedException;
 
 import org.apache.commons.mail.HtmlEmail;
 
-public class SinaHost implements HostEntity{
+public class Sina implements Domain{
 
 	@Override
 	public void setHostWithSSL(HtmlEmail email) {

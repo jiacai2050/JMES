@@ -1,0 +1,6 @@
+email=zhangsan@163.com
+pwd=1213
+recipients=http://tieba.baidu.com/f?ct=335675392&tn=baiduPostBrowser&sc=55405103685&z=1383071242#55405103685 #哈哈，这个网页上的邮箱全是我的目标
+msgFile=/path/to/your/msgfile
+attachFolder=/path/to/your/picture/folder #显示在正文中
+picFolder=/path/to/your/attach/folder
