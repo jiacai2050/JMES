@@ -6,12 +6,12 @@ JMES
 =========
 1. 在conf文件夹下创建jmes.properties文件
 2. jmes.properties支持以下属性
-－　email=your email<必选>
-－　pwd=your email密码<必选>
-－　recipients=制定收件人的文件，可以是网页幺<必选>
-－　msgFile=存放正文的文件路径<必选>
-－　attachFolder=存放正文中图片的文件夹路径<可选>
-－　picFolder=存放附件的文件夹夹<可选>
+- email=your email<必选>
+- pwd=your email密码<必选>
+- recipients=制定收件人的文件，可以是网页幺<必选>
+- msgFile=存放正文的文件路径<必选>
+- attachFolder=存放正文中图片的文件夹路径<可选>
+- picFolder=存放附件的文件夹夹<可选>
 3. 运行bin/jmes.sh <邮件主题> 来发送邮件
 4. 本项目正在开发中
 

@@ -53,7 +53,7 @@ public class JMES {
 		for(InternetAddress rec: recipients) {
 			System.out.println(rec.getAddress());
 		}
-		System.out.println("发送邮件Y(^_^)Y");
+		System.out.println("发送邮件	Y(^_^)Y");
 	}
 
 	public JMEAuthentication getAuth() {

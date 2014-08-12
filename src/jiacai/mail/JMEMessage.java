@@ -30,8 +30,8 @@ public class JMEMessage {
 			}
 
 		}
-		buffer.append("<br><br>群发Power BY <a herf='https://github.com/jiacai2050/JMES'>JMES</a>");
-		buffer.append("<br>作者个人博客<a herf='http://liujiacai.net'>http://liujiacai.net</a>");
+		buffer.append("<br><br>群发代码https://github.com/jiacai2050/JMES");
+		buffer.append("<br>作者个人博客http://liujiacai.net");
 		this.msg = buffer.toString();
 		if (null != attachFolder && !attachFolder.trim().equals("")) {
 			appendAttach(email, attachFolder);
