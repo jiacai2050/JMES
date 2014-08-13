@@ -11,7 +11,7 @@ JMES
 - recipients=制定收件人的文件，可以是网页幺<必选>
 - msgFile=存放正文的文件路径<必选>
 - attachFolder=存放正文中图片的文件夹路径<可选>
-- picFolder=存放附件的文件夹夹<可选>
+- picFolder=存放附件的文件夹<可选>
 3. 运行bin/jmes.sh <邮件主题> 来发送邮件
 4. 本项目正在开发中
 
@@ -22,7 +22,7 @@ JMES
 - JMES是JiacaiMassEmailSender的单词首字母简写
 - 本项目基于[Apache Common Email](http://commons.apache.org/proper/commons-email/index.html)之上开发，感谢开源社区。
 - 有问题或建议请反馈到：
-    - 微博 ：[@LJC_class](http://weibo.com/liujiacai/)
+    - 微博 ：[@jiacai2050](http://weibo.com/liujiacai/)
     - 邮箱 ：jiacai2050@gmail.com  
 - Have fun! 
 
